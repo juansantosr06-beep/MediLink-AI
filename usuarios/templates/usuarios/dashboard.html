@@ -5,6 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediLink - Dashboard AI</title>
+
+    <link rel="manifest" href="{% static 'usuarios/manifest.json' %}">
+    <meta name="theme-color" content="#00f2fe">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MediLink">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'usuarios/images/apple-touch-icon.png' %}">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'usuarios/images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'usuarios/images/favicon-16x16.png' %}">
+
     <link rel="stylesheet" href="{% static 'usuarios/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'usuarios/css/dashboard.css' %}">
 </head>
@@ -65,6 +77,16 @@
     <div class="bg-circle green-circle"></div>
 
     <script>
+        // REGISTRO DEL SERVICE WORKER (Para PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registrado', reg))
+                    .catch(err => console.error('Error al registrar SW', err));
+            });
+        }
+
+        // LÓGICA DE LA CÁMARA
         const startBtn = document.getElementById('start-camera');
         const video = document.getElementById('video');
         const cameraContainer = document.getElementById('camera-container');
@@ -81,15 +103,14 @@
                 startBtn.style.display = 'none';
                 cameraContainer.scrollIntoView({ behavior: 'smooth' });
             } catch (err) {
-                alert("Error: Asegúrate de usar HTTPS o localhost para acceder a la cámara.");
+                alert("Error: Accede mediante HTTPS o IP local para activar la cámara.");
                 console.error(err);
             }
         });
 
         takePhotoBtn.addEventListener('click', () => {
-            alert("Capturando receta... Iniciando procesamiento en Python.");
+            alert("Capturando... Procesando con Python.");
         });
     </script>
-
 </body>
 </html>

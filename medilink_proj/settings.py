@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&2nr_igr^)%qc-3wdu=o@kwjbiv-%_a=6bdg!fdu55p*^w%1m#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] #aqui puse eso para poder conectarme desde mi cel el ['*']
+ALLOWED_HOSTS = ['*'] #aqui puse eso para poder conectarme desde mi cel el ['*']
 
 
 # Application definition
