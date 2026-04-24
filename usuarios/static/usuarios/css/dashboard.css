@@ -88,3 +88,36 @@
     border-radius: 50%;
     animation: pulse 2s infinite;
 }
+/* Estilo para el Botón LISTO y CAPTURAR (Glassmorphism) */
+.btn-confirm-dose {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-confirm-dose:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.btn-confirm-dose:active {
+    transform: scale(0.95);
+}
+
+/* Ajuste específico para que el botón se vea bien en móviles */
+@media (max-width: 480px) {
+    .btn-confirm-dose {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}

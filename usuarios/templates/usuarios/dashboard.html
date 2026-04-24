@@ -42,8 +42,16 @@
             <button class="btn-confirm-dose">LISTO</button>
         </div>
 
+        <div id="camera-container" style="display:none; margin-top:20px; text-align: center;">
+            <div class="glass-panel" style="padding: 15px; border-radius: 25px;">
+                <video id="video" width="100%" autoplay playsinline style="border-radius: 15px; border: 2px solid #00f2fe; box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);"></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+                <button id="take-photo" class="btn-confirm-dose" style="margin-top:15px; width: 100%; position: relative; left: 0; transform: none;">CAPTURAR AHORA</button>
+            </div>
+        </div>
+
         <div class="scan-action-container">
-            <button class="btn-main-scan">
+            <button class="btn-main-scan" id="start-camera">
                 <div class="scan-icon-wrapper">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
                 </div>
@@ -55,6 +63,33 @@
 
     <div class="bg-circle blue-circle"></div>
     <div class="bg-circle green-circle"></div>
+
+    <script>
+        const startBtn = document.getElementById('start-camera');
+        const video = document.getElementById('video');
+        const cameraContainer = document.getElementById('camera-container');
+        const takePhotoBtn = document.getElementById('take-photo');
+
+        startBtn.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "environment" },
+                    audio: false
+                });
+                video.srcObject = stream;
+                cameraContainer.style.display = 'block';
+                startBtn.style.display = 'none';
+                cameraContainer.scrollIntoView({ behavior: 'smooth' });
+            } catch (err) {
+                alert("Error: Asegúrate de usar HTTPS o localhost para acceder a la cámara.");
+                console.error(err);
+            }
+        });
+
+        takePhotoBtn.addEventListener('click', () => {
+            alert("Capturando receta... Iniciando procesamiento en Python.");
+        });
+    </script>
 
 </body>
 </html>
