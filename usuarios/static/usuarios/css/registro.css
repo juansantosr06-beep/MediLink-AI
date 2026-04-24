@@ -1,0 +1,145 @@
+/* registro.css - MediLink AI */
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px; /* Un poco más ancho para los campos de registro */
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.logo-img {
+    max-width: 140px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 10px rgba(0, 184, 148, 0.2));
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 25px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Grupos de entrada */
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px rgba(0, 184, 148, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Botón de Peek (Ojo) */
+.toggle-btn-peek {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    padding: 5px;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn-peek.active {
+    color: var(--accent-green);
+    filter: drop-shadow(0 0 5px var(--accent-green));
+}
+
+/* Botón Registrarse */
+.btn-login-ai {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+    color: white;
+    border: none;
+    padding: 16px;
+    width: 100%;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: 0.6s;
+}
+
+/* --- ADAPTABILIDAD --- */
+
+@media (hover: hover) {
+    .btn-login-ai:hover .btn-shine {
+        left: 100%;
+    }
+    .btn-login-ai:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+    }
+}
+
+.login-footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.login-footer a {
+    color: var(--accent-green);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}

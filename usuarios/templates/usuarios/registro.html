@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLink - Registro AI</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/registro.css' %}">
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="glass-panel">
+            <div class="login-header">
+                <img src="{% static 'usuarios/images/logo.png' %}" alt="Logo MediLink" class="logo-img">
+                <p class="subtitle">CREAR CUENTA</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="input-group">
+                    <label>Nombre Completo</label>
+                    <input type="text" name="full_name" placeholder="Ej: Juan Manuel Santos" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Correo Electrónico</label>
+                    <input type="email" name="email" placeholder="usuario@medilink.ai" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
+                        <button type="button" id="peekPassword" class="toggle-btn-peek">
+                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login-ai">
+                    <span>REGISTRARSE</span>
+                    <div class="btn-shine"></div>
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia Sesión</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-circle blue-circle"></div>
+    <div class="bg-circle green-circle"></div>
+
+    <script>
+        const peekBtn = document.querySelector('#peekPassword');
+        const passwordInput = document.querySelector('#password');
+
+        const showPass = () => {
+            passwordInput.type = 'text';
+            peekBtn.classList.add('active');
+        };
+
+        const hidePass = () => {
+            passwordInput.type = 'password';
+            peekBtn.classList.remove('active');
+        };
+
+        // Eventos para Mouse
+        peekBtn.addEventListener('mousedown', showPass);
+        peekBtn.addEventListener('mouseup', hidePass);
+        peekBtn.addEventListener('mouseleave', hidePass);
+
+        // Eventos para Pantallas Táctiles
+        peekBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            showPass();
+        });
+        peekBtn.addEventListener('touchend', hidePass);
+    </script>
+</body>
+</html>

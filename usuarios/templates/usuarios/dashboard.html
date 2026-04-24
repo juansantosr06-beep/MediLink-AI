@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediLink - Dashboard AI</title>
+    <link rel="stylesheet" href="{% static 'usuarios/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'usuarios/css/dashboard.css' %}">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <header class="user-header">
+            <div class="user-info">
+                <p class="welcome-text">Hola de nuevo,</p>
+                <h1 class="user-name">Juan Manuel</h1>
+            </div>
+            <div class="user-avatar">
+                <img src="{% static 'usuarios/images/avatar_placeholder.png' %}" alt="Perfil">
+            </div>
+        </header>
+
+        <div class="status-card glass-panel">
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <span>SISTEMA ACTIVO</span>
+            </div>
+            <p class="status-msg">Tu tratamiento está al día. Próxima revisión en 2 horas.</p>
+        </div>
+
+        <div class="dose-card glass-panel">
+            <div class="card-content">
+                <span class="dose-badge">PRÓXIMA TOMA</span>
+                <h3>Paracetamol</h3>
+                <p class="dose-detail">500mg • 1 tableta</p>
+                <div class="time-slot">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span>22:00 hrs</span>
+                </div>
+            </div>
+            <button class="btn-confirm-dose">LISTO</button>
+        </div>
+
+        <div class="scan-action-container">
+            <button class="btn-main-scan">
+                <div class="scan-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                </div>
+                <span>ESCANEAR RECETA</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+    </div>
+
+    <div class="bg-circle blue-circle"></div>
+    <div class="bg-circle green-circle"></div>
+
+</body>
+</html>

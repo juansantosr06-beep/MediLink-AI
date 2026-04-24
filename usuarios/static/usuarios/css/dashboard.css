@@ -1,0 +1,90 @@
+/* dashboard.css - Panel de Control AI */
+.dashboard-container {
+    padding: 30px 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-name {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Tarjeta de Dosis con Glassmorphism */
+.dose-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--accent-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* --- ADAPTABILIDAD DE ANIMACIONES --- */
+
+/* Si el usuario tiene MOUSE */
+@media (hover: hover) {
+    .dose-card:hover {
+        transform: translateX(8px);
+        background: rgba(255, 255, 255, 0.06);
+    }
+    .btn-main-scan:hover svg {
+        animation: scan-line 1.5s infinite ease-in-out;
+    }
+}
+
+/* Si el usuario tiene PANTALLA TÁCTIL (Móvil) */
+@media (hover: none) {
+    .btn-main-scan svg {
+        animation: scan-line 3s infinite ease-in-out; /* Animación constante más suave */
+    }
+}
+
+/* Estilos del Botón de Escaneo */
+.btn-main-scan {
+    background: linear-gradient(135deg, var(--primary-blue), var(--accent-green));
+    border: none;
+    width: 100%;
+    padding: 30px;
+    border-radius: 24px;
+    color: white;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 15px 35px rgba(0, 184, 148, 0.25);
+}
+
+@keyframes scan-line {
+    0% { transform: translateY(-3px); }
+    50% { transform: translateY(3px); filter: drop-shadow(0 0 8px var(--accent-green)); }
+    100% { transform: translateY(-3px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    70% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.pulse-dot {
+    width: 8px; height: 8px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
